@@ -10,6 +10,10 @@ const updateSelectedCount = () => {
   const selectedSeats = document.querySelectorAll(`.row .seat.selected`);
   const selectedSeatsCount = selectedSeats.length;
 
+  const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
+
+  localStorage.setItem(`selectedSeats`, JSON.stringify(seatsIndex));
+
   count.innerText = selectedSeatsCount;
   total.innerText = selectedSeatsCount * ticketPrice;
 };
